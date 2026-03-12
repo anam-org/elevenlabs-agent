@@ -1,9 +1,11 @@
 import ConversationView from "@/components/ConversationView";
+import Header from "@/components/Header";
 
 export type Preset = {
   label: string;
   avatarId: string;
   agentId: string;
+  previewImage: string;
 };
 
 export default function Home() {
@@ -12,75 +14,73 @@ export default function Home() {
       label: process.env.PERSONA_1_NAME ?? "Persona 1",
       avatarId: process.env.PERSONA_1_AVATAR_ID ?? "",
       agentId: process.env.PERSONA_1_AGENT_ID ?? "",
+      previewImage: "/avatar-preview-1.png",
     },
     {
       label: process.env.PERSONA_2_NAME ?? "Persona 2",
       avatarId: process.env.PERSONA_2_AVATAR_ID ?? "",
       agentId: process.env.PERSONA_2_AGENT_ID ?? "",
+      previewImage: "/avatar-preview-2.png",
     },
     {
       label: process.env.PERSONA_3_NAME ?? "Persona 3",
       avatarId: process.env.PERSONA_3_AVATAR_ID ?? "",
       agentId: process.env.PERSONA_3_AGENT_ID ?? "",
+      previewImage: "/avatar-preview-3.png",
     },
   ].filter((p) => p.avatarId && p.agentId);
 
   return (
-    <main className="min-h-dvh flex flex-col items-center p-4 sm:p-8 pb-16">
+    <main className="min-h-dvh flex flex-col">
+      <Header />
+
+      {/* Content section */}
+      <div className="flex-1 flex flex-col items-center p-4 sm:p-8 pb-16 pt-24 sm:pt-28">
+        <div className="flex flex-col items-center mb-6">
+          <div className="flex items-center gap-2 sm:gap-4">
+            <span className="text-black text-[20px] sm:text-[32px] font-medium tracking-[-0.4px] sm:tracking-[-0.64px] leading-[32px] sm:leading-[44px] flex items-baseline gap-1.5 sm:gap-2">
+              Add a face to your
+              <a
+                href="https://elevenlabs.io/agents"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:opacity-80 transition-opacity inline-flex items-baseline"
+              >
+                <img
+                  src="/elevenlabs-logo.svg"
+                  alt="ElevenLabs"
+                  className="h-[14px] sm:h-[22px] translate-y-[1px]"
+                />
+              </a>
+              Agent
+            </span>
+
+          </div>
+          <p className="text-black/70 text-[20px] sm:text-[32px] font-medium tracking-[-0.4px] sm:tracking-[-0.64px] leading-[32px] sm:leading-[44px] text-center">
+            Expressive Voice Agents
+          </p>
+        </div>
+        <ConversationView presets={presets} />
+      </div>
+
+      <footer className="fixed bottom-0 left-0 right-0 flex items-center justify-center gap-2 sm:gap-8 py-4 sm:py-6 px-4 bg-[#F5F5F5] backdrop-blur-sm">
       <a
-        href="https://anam.ai"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed top-6 left-6 sm:left-10 z-10 h-6 sm:h-7"
-      >
-        <svg
-          height="100%"
-          viewBox="0 0 86 29"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M18.1491 28.1986L16.2127 21.63L6.3408 21.63L4.40439 28.1986H0L9.03659 -1.79687L13.4789 -1.79687L22.5535 28.1986H18.1491ZM7.47986 17.8331L15.0736 17.8331L11.2767 4.96161L7.47986 17.8331Z"
-            fill="white"
-          />
-          <path
-            d="M24.7666 28.1984L24.7666 7.69518L39.5745 7.69518V28.1984L35.3979 28.1984V11.4921L28.9432 11.4921L28.9432 28.1984H24.7666Z"
-            fill="white"
-          />
-          <path
-            d="M61.0239 28.1984V7.69518L85.7037 7.69518V28.1984H81.5271V11.4921L75.4521 11.4921V28.1984L71.2755 28.1984V11.4921L65.2005 11.4921V28.1984H61.0239Z"
-            fill="white"
-          />
-          <path
-            d="M42.8948 7.69518L57.7026 7.69518V28.1984L53.5261 28.1984V27.1353C52.4629 28.0466 51.0201 28.5781 49.3495 28.5781C45.4007 28.5781 42.8948 25.7305 42.8948 21.2501C42.8948 16.8457 45.4007 14.074 49.3495 14.074C51.0201 14.074 52.4629 14.5676 53.5261 15.4788V11.3022L42.8948 11.3022V7.69518ZM50.4885 24.7812C52.6148 24.7812 53.9437 23.4143 53.9057 21.2501C53.8678 19.0859 52.5389 17.681 50.4885 17.681C48.4003 17.681 47.0713 19.0859 47.0713 21.2501C47.0713 23.4143 48.4003 24.7812 50.4885 24.7812Z"
-            fill="white"
-          />
-        </svg>
-      </a>
-
-      <h1 className="text-4xl sm:text-5xl font-bold mb-8 text-center tracking-tight">
-        Anam X ElevenLabs<br />
-        <span className="text-zinc-400">Expressive Voice Agents</span>
-      </h1>
-      <ConversationView presets={presets} />
-
-      <footer className="fixed bottom-0 left-0 right-0 flex items-center justify-center gap-8 py-6 text-lg font-medium text-white bg-[var(--background)]/90 backdrop-blur-sm border-t border-zinc-700/50">
-        <a
-          href="https://anam.ai"
+          href="https://lab.anam.ai/api-keys"
           target="_blank"
           rel="noopener noreferrer"
-          className="px-6 py-2.5 rounded-full bg-white text-black hover:bg-zinc-200 transition-colors"
+          className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-black text-white hover:bg-gray transition-colors text-xs sm:text-sm font-medium whitespace-nowrap"
         >
-          Sign Up For Free &rarr;
+          Create Anam API Key
         </a>
         <a
           href="https://anam.ai/cookbook/elevenlabs-expressive-voice-agents"
           target="_blank"
           rel="noopener noreferrer"
-          className="px-6 py-2.5 rounded-full border border-zinc-500 text-white hover:bg-zinc-800 transition-colors"
+          className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white text-black hover:bg-black hover:text-white transition-all text-xs sm:text-sm font-medium whitespace-nowrap"
         >
-          Build Your Own &rarr;
+          Check out the Cookbook
         </a>
+      
       </footer>
     </main>
   );

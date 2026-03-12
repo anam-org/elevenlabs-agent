@@ -1,15 +1,22 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const thermochrome = localFont({
+  src: "./fonts/MDThermochrome0.4-Variable.ttf",
+  variable: "--font-thermochrome",
+});
+
+const berkeleyMono = localFont({
+  src: "./fonts/BerkeleyMonoTrial-Regular.otf",
+  variable: "--font-berkeley-mono",
+  weight: "400",
 });
 
 export const metadata: Metadata = {
@@ -26,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${inter.variable} ${thermochrome.variable} ${berkeleyMono.variable} antialiased`}
       >
         {children}
       </body>
