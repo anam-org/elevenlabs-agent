@@ -83,15 +83,13 @@ export const TranscriptionSegment = ({
   onClick,
   ...props
 }: TranscriptionSegmentProps) => {
-  const { currentTime, onSeek } = useTranscription()
+  const { currentTime, onSeek, onTimeUpdate } = useTranscription()
 
   const isActive = currentTime >= segment.startSecond && currentTime < segment.endSecond
   const isPast = currentTime >= segment.endSecond
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    if (onSeek) {
-      onSeek(segment.startSecond)
-    }
+    onTimeUpdate(segment.startSecond)
     onClick?.(event)
   }
 
