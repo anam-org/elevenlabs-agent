@@ -23,6 +23,13 @@ export const metadata: Metadata = {
   title: "ElevenLabs Agent + Anam Avatar",
   description:
     "Expressive voice agent with real-time lip-synced avatar",
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
+    viewportFit: "cover",
+  },
 };
 
 export default function RootLayout({
