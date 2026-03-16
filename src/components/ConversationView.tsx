@@ -170,13 +170,13 @@ export default function ConversationView({
         }}
       >
         <a
-          href="https://anam.ai/book-demo"
+          href="https://lab.anam.ai/login"
           target="_blank"
           rel="noopener noreferrer"
           className="px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-black text-white hover:bg-gray transition-colors text-sm font-medium whitespace-nowrap"
           tabIndex={status === "connecting" || status === "connected" ? -1 : 0}
         >
-          Contact Sales
+          Sign Up
         </a>
       </div>
 
@@ -360,14 +360,14 @@ export default function ConversationView({
                 onClick={() => setSelectedIndex(i)}
                 disabled={status === "connecting" || status === "connected"}
                 tabIndex={status === "connecting" || status === "connected" ? -1 : 0}
-                className={`flex flex-col items-center gap-1 sm:gap-2 transition-all disabled:opacity-50 touch-action-manipulation min-w-[44px] p-1 ${
+                className={`flex flex-col items-center gap-1 sm:gap-2 transition-all disabled:opacity-50 touch-action-manipulation w-[80px] sm:w-[140px] p-1 ${
                   i === selectedIndex ? "scale-105" : "scale-100 opacity-70 hover:opacity-100"
                 }`}
                 style={{ WebkitTapHighlightColor: "transparent" }}
               >
                 {/* Thumbnail image */}
                 <div
-                  className={`w-12 h-12 sm:w-20 sm:h-20 rounded-lg sm:rounded-2xl overflow-hidden border-2 transition-all ${
+                  className={`w-12 h-12 sm:w-20 sm:h-20 rounded-lg sm:rounded-2xl overflow-hidden border-2 transition-all flex-shrink-0 ${
                     i === selectedIndex
                       ? "border-[#FF6200] shadow-lg"
                       : "border-transparent"
@@ -380,10 +380,10 @@ export default function ConversationView({
                   />
                 </div>
 
-                {/* Label */}
-                <div className="flex items-start justify-center gap-0.5 max-w-[60px] sm:max-w-none">
+                {/* Label - fixed height container */}
+                <div className="flex items-start justify-center gap-0.5 w-full min-h-[24px] sm:min-h-[40px]">
                   <span
-                    className="font-medium text-[9px] sm:text-sm truncate"
+                    className="font-medium text-[9px] sm:text-sm text-center leading-tight"
                     style={{
                       color: i === selectedIndex ? "#FF6200" : "rgba(0, 0, 0, 0.65)",
                       fontFamily: "Inter",
