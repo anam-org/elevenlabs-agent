@@ -182,7 +182,7 @@ export default function ConversationView({
 
       {/* Heading - fades out when session starts */}
       <div
-        className="flex flex-col items-center gap-0.5 sm:gap-2 text-center flex-shrink-0 transition-opacity duration-500 ease-out motion-reduce:transition-none"
+        className="flex flex-col items-center gap-0.5 sm:gap-2 text-center flex-shrink-0 transition-opacity duration-500 ease-out motion-reduce:transition-none mb-16"
         style={{
           opacity: status === "connecting" || status === "connected" ? 0 : 1,
           maxHeight: status === "connecting" || status === "connected" ? 0 : "200px",
