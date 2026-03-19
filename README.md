@@ -31,7 +31,7 @@ The ElevenLabs SDK's built-in speaker is muted (volume 0) so the user only hears
 1. Go to [elevenlabs.io](https://elevenlabs.io) → **Agents** → **Create Agent**
 2. Configure your agent's system prompt and personality
 3. Under **Agent Voice**, select **V3 Conversational** as the TTS model (enables expressive mode)
-4. Under **Advanced** settings, set output audio format to `pcm_16000`
+4. Under **Advanced** settings, set user input audio format to `pcm_16000`
 5. Copy the **Agent ID**
 
 ### 2. Anam Avatar
