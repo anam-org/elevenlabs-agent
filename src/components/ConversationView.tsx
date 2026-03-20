@@ -34,7 +34,7 @@ export default function ConversationView({
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const anamClientRef = useRef<AnamClient | null>(null);
-  const audioInputStreamRef = useRef<ReturnType<
+  const agentAudioInputStreamRef = useRef<ReturnType<
     AnamClient["createAgentAudioInputStream"]
   > | null>(null);
   const conversationRef = useRef<Conversation | null>(null);
@@ -94,7 +94,7 @@ export default function ConversationView({
       anamClient.addListener(AnamEvent.SESSION_READY, () => {
         // Flush any audio that arrived before Anam was ready
         for (const chunk of audioBufferRef.current) {
-          audioInputStreamRef.current?.sendAudioChunk(chunk);
+          agentAudioInputStreamRef.current?.sendAudioChunk(chunk);
         }
         audioBufferRef.current = [];
         anamReadyRef.current = true;
@@ -103,12 +103,12 @@ export default function ConversationView({
       await anamClient.streamToVideoElement("avatar-video");
       console.log("Anam streaming OK");
 
-      const audioInputStream = anamClient.createAgentAudioInputStream({
+      const agentAudioInputStream = anamClient.createAgentAudioInputStream({
         encoding: "pcm_s16le",
         sampleRate: 16000,
         channels: 1,
       });
-      audioInputStreamRef.current = audioInputStream;
+      agentAudioInputStreamRef.current = agentAudioInputStream;
 
       // --- ElevenLabs setup ---
       console.log("Starting ElevenLabs session...");
@@ -119,7 +119,7 @@ export default function ConversationView({
           transcript.handleAudioChunk(base64Audio);
 
           if (anamReadyRef.current) {
-            audioInputStreamRef.current?.sendAudioChunk(base64Audio);
+            agentAudioInputStreamRef.current?.sendAudioChunk(base64Audio);
           } else {
             audioBufferRef.current.push(base64Audio);
           }
@@ -137,7 +137,7 @@ export default function ConversationView({
 
         onModeChange: ({ mode }: { mode: string }) => {
           if (mode === "listening") {
-            audioInputStreamRef.current?.endSequence();
+            agentAudioInputStreamRef.current?.endSequence();
             transcript.handleAgentDone();
           }
         },
@@ -183,7 +183,7 @@ export default function ConversationView({
     } catch {}
     conversationRef.current = null;
     anamClientRef.current = null;
-    audioInputStreamRef.current = null;
+    agentAudioInputStreamRef.current = null;
     anamReadyRef.current = false;
     audioBufferRef.current = [];
     setStatus("idle");
