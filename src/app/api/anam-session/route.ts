@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 
+const AVATAR_MODEL = "cara-4";
+
 /**
  * Creates an Anam session token with ElevenLabs agent settings.
  *
@@ -62,7 +64,7 @@ export async function POST(request: Request) {
   // Create Anam session token with ElevenLabs agent settings
   const anamApiUrl = process.env.ANAM_API_URL || "https://lab.anam.ai";
   const sessionTokenBody = {
-    personaConfig: { avatarId },
+    personaConfig: { avatarId, avatarModel: AVATAR_MODEL },
     environment: {
       elevenLabsAgentSettings: {
         signedUrl,
