@@ -1,6 +1,22 @@
+# Retired: ElevenLabs agent + Anam avatar demo
+
+This demo was retired on 17 November 2026. Its live site, elevenlabs-anam-agent.vercel.app, now redirects to the ElevenLabs integration page, and this repository is archived and read-only.
+
+To put an Anam face on an ElevenLabs agent today:
+
+- Read the [ElevenLabs Agents guide](https://anam.ai/docs/integrations/elevenlabs/agents).
+- Start from the maintained [Next.js example in the Anam cookbook](https://github.com/anam-org/anam-cookbook/tree/main/examples/elevenlabs-server-side-agent-nextjs), which replaces this repo.
+- See [anam.ai/integrations/elevenlabs](https://anam.ai/integrations/elevenlabs) for an overview. Signing in with ElevenLabs and connecting an agent directly in [Anam Lab](https://lab.anam.ai), without code, is in development.
+
+Don't deploy this code as it stands. Its `/api/anam-session` route has no authentication, so anyone could start sessions with your Anam and ElevenLabs API keys, and its dependencies are no longer maintained.
+
+The original README follows for reference.
+
+---
+
 # ElevenLabs Expressive Voice Agent + Anam Avatar
 
-> **This branch uses the server-side integration** — the Anam engine connects to ElevenLabs directly. The client only uses the Anam SDK. If you need direct client-side control over the ElevenLabs connection, see the [`clientside_version`](https://github.com/robbie-anam/elevenlabs-agent/tree/clientside_version) branch.
+> **This branch uses the server-side integration** — the Anam engine connects to ElevenLabs directly. The client only uses the Anam SDK. If you need direct client-side control over the ElevenLabs connection, see the [`clientside_version`](https://github.com/anam-org/elevenlabs-agent/tree/clientside_version) branch.
 >
 > **Documentation**: [Server-Side Implementation Guide](https://anam.ai/docs/third-party-integrations/elevenlabs#server-side-implementation)
 

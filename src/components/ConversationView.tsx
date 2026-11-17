@@ -479,7 +479,7 @@ export default function ConversationView({
         }}
       >
         <a
-          href="https://github.com/robbie-anam/elevenlabs-agent"
+          href="https://github.com/anam-org/elevenlabs-agent"
           target="_blank"
           rel="noopener noreferrer"
           className="px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white text-black hover:bg-black hover:text-white transition-colors text-sm font-medium whitespace-nowrap"
